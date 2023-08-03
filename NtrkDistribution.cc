@@ -1,14 +1,3 @@
-// Package:    Analyzers/NtrkDistribution
-// Class:      NtrkDistribution
- 
-/*class NtrkDistribution NtrkDistribution.cc Analyzers/NtrkDistribution/plugins/NtrkDistribution.cc
- Description: [one line class summary]
- Implementation:
-     [Notes on implementation]
- Original Author:  Maxime Guilbaud
- Created:  Tue, 24 Oct 2017 13:23:04 GMT
-*/
-
 // system include files
 #include <memory>
 
@@ -59,27 +48,6 @@ NtrkDistribution::NtrkDistribution(const edm::ParameterSet& iConfig) :
 //change - removing efficiency file.
 fname_(iConfig.getUntrackedParameter<edm::InputTag>("fname")),
 effmultbin_(iConfig.getUntrackedParameter< std::vector<int> >("effmultbin"))
-  
-  //now do what ever initialization is needed
-  /* TString filename(fname_.label().c_str());
-     feff_ = 0x0;
-     if(!filename.IsNull())
-     {
-     edm::FileInPath fip(Form("Analyzers/NtrkDistribution/data/EFF/%s",filename.Data()));
-     feff_ = new TFile(fip.fullPath().c_str(),"READ");
-     
-      heff_.resize(feff_->GetNkeys());
-      if(heff_.size() != effmultbin_.size() - 1)
-      {
-      edm::LogWarning ("Inconsitent binning") << " Inconsistent binning for the acc X eff correction..."
-      << " You might have wrong setting here";
-      }
-      
-      for(unsigned short ik = 0; ik < heff_.size(); ++ik)
-      {
-      heff_[ik] = (TH2D*) feff_->Get(feff_->GetListOfKeys()->At(ik)->GetName());
-      }
-      }*/
 {
   //Output
   usesResource("TFileService");
@@ -309,7 +277,7 @@ NtrkDistribution::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetu
        itTrk != tracks->end();
        ++itTrk )
     {
-      // std::cout<< "My Trackssssssssssssssss pt = " << itTrk->pt() <<std::endl;
+
       // Select tracks based on proximity to best vertex
       math::XYZPoint bestvtx(xBestVtx_,yBestVtx_,zBestVtx_);
       double dzvtx    = itTrk->dz(bestvtx);
@@ -330,15 +298,6 @@ NtrkDistribution::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetu
   
       // Select track based on quality
       if( !itTrk->quality(reco::TrackBase::highPurity) ) continue;
-      //if( fabs(pterror) / pt      >= pterrorpt_ ) continue;
-      //if( fabs(dzvtx / dzerror)   >= dzdzerror_ ) continue;
-      //if( fabs(dxyvtx / dxyerror) >= d0d0error_ ) continue;
-      //if( pt <= 0.4 ) continue;
-      //if( charge == 0 ) continue;
-      //if(nhits < 6) continue;
-      //if( pt < 0.0001 ) continue;                                                                    
-      
-      // Track selection for analysis(No other dca cuts for merged general and pixel track condition.
 
       if(abs(eta) > 2.5) continue;
       //if(pt < ptmin_ || pt > ptmax_) continue;
@@ -450,10 +409,6 @@ NtrkDistribution::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetu
   Phisumtree.clear();
   Etasumtree.clear();
   Msumtree.clear();
-  //rhopttree.clear();
-  //rhoetatree.clear();
-  //rhophitree.clear();
-  //rhomtree.clear();
   
   HFMinustree.clear();
   HFPlustree.clear();
