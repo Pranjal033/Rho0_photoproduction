@@ -27,13 +27,6 @@ process.options = cms.untracked.PSet(wantSummary = cms.untracked.bool(True))
 #----- Testing one One file -------------------
 process.source = cms.Source("PoolSource",
                             fileNames = cms.untracked.vstring(
-                              # '/store/hidata/HIRun2023A/HIEmptyBX/AOD/16Jan2024-v1/40000/252fb8d6-3990-4aa8-82fb-1fb69f149665.root' #Empty bunch crossing events : Empty BX : For finding ZDC noise
-                            #'/store/hidata/HIRun2023A/HIZeroBias1/AOD/16Jan2024-v1/30000/38779ffd-49be-4faf-a672-dee3deadf779.root'  #Dataset : Zero Bias UPC : For finding nuetron multiplicity factors: Better use this one
-                            # '/store/hidata/HIRun2023A/HIZeroBias0/AOD/PromptReco-v2/000/375/697/00000/af599977-b185-436b-a18f-5931f630c47b.root' #Dataset : Zero Bias UPC : For finding nuetron multiplicity factors
-                            #'/store/hidata/HIRun2023A/HIForward0/AOD/16Jan2024-v1/2810000/26663e2c-8848-48b2-a4ab-2c0a24226de9.root'
-                            #'/store/hidata/HIRun2023A/HIForward0/AOD/16Jan2024-v1/40000/7efdd2e1-1597-424f-b77f-22935545155d.root'
-                            #'/store/user/anstahll/PbPb2023/SKIM/HIFW_TR/2024_01_08/HIForward0/SKIM_TR_AOD_HIFORWARD_HIForward0_HIRun2023A_2024_01_08/240108_190123/0000/reco_RAW2DIGI_L1Reco_RECO_UPC_1.root'
-                            #Older dataset :'/store/user/anstahll/PbPb2023/SKIM/HIFW_TR/HIForward0/SKIM_TR_AOD_HIFORWARD_HIForward0_HIRun2023A_2023_11_02/231102_064450/0000/reco_RAW2DIGI_L1Reco_RECO_HIFORWARD_10.root'
                             '/store/hidata/HIRun2023A/HIForward0/AOD/16Jan2024-v1/40000/7efdd2e1-1597-424f-b77f-22935545155d.root'
                             ),
 )
